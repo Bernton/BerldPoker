@@ -10,7 +10,17 @@ namespace BerldPoker
         {
             get
             {
-                return StraightFlush + FourOfAKind + FullHouse + Flush + Straight + TreeOfAKind + DoublePair + Pair + HighCard;
+                return
+                    RoyalFlush +
+                    StraightFlush +
+                    FourOfAKind +
+                    FullHouse +
+                    Flush +
+                    Straight +
+                    ThreeOfAKind +
+                    DoublePair +
+                    Pair +
+                    HighCard;
             }
         }
 
@@ -20,7 +30,7 @@ namespace BerldPoker
         public static int FullHouse { get; private set; }
         public static int Flush { get; private set; }
         public static int Straight { get; private set; }
-        public static int TreeOfAKind { get; private set; }
+        public static int ThreeOfAKind { get; private set; }
         public static int DoublePair { get; private set; }
         public static int Pair { get; private set; }
         public static int HighCard { get; private set; }
@@ -295,7 +305,7 @@ namespace BerldPoker
 
             if (IsStraightFlush(cards, ref handValue))
             {
-                if(((StraightFlush)handValue).Highest == CardValue.Ace)
+                if (((StraightFlush)handValue).Highest == CardValue.Ace)
                 {
                     RoyalFlush++;
                 }
@@ -330,7 +340,7 @@ namespace BerldPoker
 
             if (IsTreeOfAKind(cards, ref handValue))
             {
-                TreeOfAKind++;
+                ThreeOfAKind++;
                 return handValue;
             }
 

@@ -5,7 +5,7 @@ namespace BerldPoker
 {
     public static class CardImageProvider
     {
-        private static Bitmap[] _cardImages;
+        private static readonly Bitmap[] _cardImages;
 
         static CardImageProvider()
         {
@@ -15,7 +15,7 @@ namespace BerldPoker
             {
                 for (int valueIndex = 0; valueIndex < 13; valueIndex++)
                 {
-                    _cardImages[suitIndex * 13 + valueIndex] = CropImage(Resources.cardsprite, new Rectangle(valueIndex * 79, (int)(suitIndex * 123), 79, 123));
+                    _cardImages[suitIndex * 13 + valueIndex] = CropImage(Resources.cardsprite, new Rectangle(valueIndex * 79, suitIndex * 123, 79, 123));
                 }
             }
         }

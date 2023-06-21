@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="Card.cs" />
     <Compile Include="CardImageProvider.cs" />
+    <Compile Include="CardSuit.cs" />
+    <Compile Include="CardValue.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="HandCombs\DoublePair.cs" />
     <Compile Include="HandCombs\Flush.cs" />
@@ -92,8 +94,6 @@
     <Compile Include="PokerEngine.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Suit.cs" />
-    <Compile Include="Value.cs" />
     <EmbeddedResource Include="View\FormCombStatistics.resx">
       <DependentUpon>FormCombStatistics.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,11 +139,13 @@
   <ItemGroup>
     <None Include="Resources\favicon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\cardsprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\CardSprite_4.gif" />
+    <Content Include="Resources\cardsprite_old.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

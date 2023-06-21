@@ -175,7 +175,7 @@ namespace BerldPoker
                 _labelFullHouse.Text = "(" + Math.Round((double)PokerEngine.FullHouse / PokerEngine.Total * 100.0, 2) + "%) " + PokerEngine.FullHouse;
                 _labelFlushes.Text = "(" + Math.Round((double)PokerEngine.Flush / PokerEngine.Total * 100.0, 2) + "%) " + PokerEngine.Flush;
                 _labelStraights.Text = "(" + Math.Round((double)PokerEngine.Straight / PokerEngine.Total * 100.0, 2) + "%) " + PokerEngine.Straight;
-                _labelSets.Text = "(" + Math.Round((double)PokerEngine.TreeOfAKind / PokerEngine.Total * 100.0, 2) + "%) " + PokerEngine.TreeOfAKind;
+                _labelSets.Text = "(" + Math.Round((double)PokerEngine.ThreeOfAKind / PokerEngine.Total * 100.0, 2) + "%) " + PokerEngine.ThreeOfAKind;
                 _labelDoublePairs.Text = "(" + Math.Round((double)PokerEngine.DoublePair / PokerEngine.Total * 100.0, 1) + "%) " + PokerEngine.DoublePair;
                 _labelPairs.Text = "(" + Math.Round((double)PokerEngine.Pair / PokerEngine.Total * 100.0, 1) + "%) " + PokerEngine.Pair;
                 _labelHighCard.Text = "(" + Math.Round((double)PokerEngine.HighCard / PokerEngine.Total * 100.0, 1) + "%) " + PokerEngine.HighCard;

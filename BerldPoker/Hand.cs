@@ -10,7 +10,7 @@
         {
             get
             {
-                return (double)Won / (double)Count * 100.0;
+                return Won / (double)Count * 100.0;
             }
         }
 
