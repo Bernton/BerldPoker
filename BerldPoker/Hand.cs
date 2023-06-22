@@ -2,15 +2,15 @@
 {
     public class Hand
     {
-        public int Count { get; set; }
-        public int Won { get; set; }
+        public double Count { get; set; }
+        public double Won { get; set; }
         public bool IsSuited { get; }
 
         public double RatioPercent
         {
             get
             {
-                return Won / (double)Count * 100.0;
+                return Won / Count * 100.0;
             }
         }
 
@@ -45,7 +45,7 @@
 
             string afterText;
 
-            if(IsSuited)
+            if (IsSuited)
             {
                 afterText = "Suited";
             }

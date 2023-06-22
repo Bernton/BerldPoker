@@ -31,7 +31,7 @@ namespace BerldPoker
 
                 rank.Value = i + 1;
                 hand.Value = sorted.Hands[i].ToString();
-                won.Value = "(" + Math.Round(sorted.Hands[i].RatioPercent, 3) + "%) " + sorted.Hands[i].Won + " / " + sorted.Hands[i].Count;
+                won.Value = $"{sorted.Hands[i].RatioPercent:0.0}% ({sorted.Hands[i].Won:0.0} / {sorted.Hands[i].Count})";
 
                 row.Cells.Add(rank);
                 row.Cells.Add(hand);

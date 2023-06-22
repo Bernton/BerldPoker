@@ -138,6 +138,7 @@ namespace BerldPoker
             }
 
             IHandValue[] winnerValues = PokerEngine.GetWinnerValues(handValues);
+            double winnerEquity = 1.0 / winnerValues.Length;
 
             for (int i = 0; i < handValues.Length; i++)
             {
@@ -150,7 +151,7 @@ namespace BerldPoker
                 _comboStats[handAmount - 1][handValues[i].GetType()][1]++;
                 currentHand.Count++;
 
-                if(handValues[i].GetType() == winnerValues[0].GetType())
+                if (handValues[i].GetType() == winnerValues[0].GetType())
                 {
                     _comboStats[handAmount - 1][handValues[i].GetType()][0]++;
                 }
@@ -162,7 +163,7 @@ namespace BerldPoker
                         ((HandPanel)_panelHands.Controls[i]).IsWinner = true;
                     }
 
-                    currentHand.Won++;
+                    currentHand.Won += winnerEquity;
                 }
             }
 
@@ -250,7 +251,7 @@ namespace BerldPoker
                 {
                     while (true)
                     {
-                       Setup(handAmount, true);
+                        Setup(handAmount, true);
                     }
                 });
 
