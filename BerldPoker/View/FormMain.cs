@@ -24,8 +24,8 @@ namespace BerldPoker
 
                 _comboStats[i].Add(typeof(HighCard), new int[2]);
                 _comboStats[i].Add(typeof(Pair), new int[2]);
-                _comboStats[i].Add(typeof(DoublePair), new int[2]);
-                _comboStats[i].Add(typeof(TreeOfAKind), new int[2]);
+                _comboStats[i].Add(typeof(TwoPair), new int[2]);
+                _comboStats[i].Add(typeof(ThreeOfAKind), new int[2]);
                 _comboStats[i].Add(typeof(Straight), new int[2]);
                 _comboStats[i].Add(typeof(Flush), new int[2]);
                 _comboStats[i].Add(typeof(FullHouse), new int[2]);
@@ -143,10 +143,10 @@ namespace BerldPoker
             for (int i = 0; i < handValues.Length; i++)
             {
                 Card[] cards = new Card[] { deck.Cards[i], deck.Cards[handAmount + i] };
-                cards = cards.OrderByDescending(c => (int)c.Value).ToArray();
+                cards = cards.OrderByDescending(c => (int)c.Rank).ToArray();
                 bool isSuited = cards[0].Suit == cards[1].Suit;
 
-                Hand currentHand = _handStats[handAmount - 1].Hands.First(c => c.CardValue1 == cards[0].Value && c.CardValue2 == cards[1].Value && c.IsSuited == isSuited);
+                Hand currentHand = _handStats[handAmount - 1].Hands.First(c => c.CardRank1 == cards[0].Rank && c.CardRank2 == cards[1].Rank && c.IsSuited == isSuited);
 
                 _comboStats[handAmount - 1][handValues[i].GetType()][1]++;
                 currentHand.Count++;
@@ -176,8 +176,8 @@ namespace BerldPoker
                 _labelFullHouse.Text = "(" + Math.Round((double)PokerEngine.FullHouse / PokerEngine.Total * 100.0, 2) + "%) " + PokerEngine.FullHouse;
                 _labelFlushes.Text = "(" + Math.Round((double)PokerEngine.Flush / PokerEngine.Total * 100.0, 2) + "%) " + PokerEngine.Flush;
                 _labelStraights.Text = "(" + Math.Round((double)PokerEngine.Straight / PokerEngine.Total * 100.0, 2) + "%) " + PokerEngine.Straight;
-                _labelSets.Text = "(" + Math.Round((double)PokerEngine.ThreeOfAKind / PokerEngine.Total * 100.0, 2) + "%) " + PokerEngine.ThreeOfAKind;
-                _labelDoublePairs.Text = "(" + Math.Round((double)PokerEngine.DoublePair / PokerEngine.Total * 100.0, 1) + "%) " + PokerEngine.DoublePair;
+                _labelTrips.Text = "(" + Math.Round((double)PokerEngine.ThreeOfAKind / PokerEngine.Total * 100.0, 2) + "%) " + PokerEngine.ThreeOfAKind;
+                _labelTwoPairs.Text = "(" + Math.Round((double)PokerEngine.TwoPair / PokerEngine.Total * 100.0, 1) + "%) " + PokerEngine.TwoPair;
                 _labelPairs.Text = "(" + Math.Round((double)PokerEngine.Pair / PokerEngine.Total * 100.0, 1) + "%) " + PokerEngine.Pair;
                 _labelHighCard.Text = "(" + Math.Round((double)PokerEngine.HighCard / PokerEngine.Total * 100.0, 1) + "%) " + PokerEngine.HighCard;
 

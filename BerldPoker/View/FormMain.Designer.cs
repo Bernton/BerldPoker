@@ -46,8 +46,8 @@
             this._labelPairs = new System.Windows.Forms.Label();
             this._labelTotalsHands = new System.Windows.Forms.Label();
             this._labelHighCard = new System.Windows.Forms.Label();
-            this._labelDoublePairs = new System.Windows.Forms.Label();
-            this._labelSets = new System.Windows.Forms.Label();
+            this._labelTwoPairs = new System.Windows.Forms.Label();
+            this._labelTrips = new System.Windows.Forms.Label();
             this._labelStraights = new System.Windows.Forms.Label();
             this._labelFlushes = new System.Windows.Forms.Label();
             this._labelQuads = new System.Windows.Forms.Label();
@@ -268,25 +268,25 @@
             this._labelHighCard.Text = "0";
             this._labelHighCard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // _labelDoublePairs
+            // _labelTwoPairs
             // 
-            this._labelDoublePairs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._labelDoublePairs.Location = new System.Drawing.Point(66, 65);
-            this._labelDoublePairs.Name = "_labelDoublePairs";
-            this._labelDoublePairs.Size = new System.Drawing.Size(92, 13);
-            this._labelDoublePairs.TabIndex = 38;
-            this._labelDoublePairs.Text = "0";
-            this._labelDoublePairs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._labelTwoPairs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._labelTwoPairs.Location = new System.Drawing.Point(66, 65);
+            this._labelTwoPairs.Name = "_labelTwoPairs";
+            this._labelTwoPairs.Size = new System.Drawing.Size(92, 13);
+            this._labelTwoPairs.TabIndex = 38;
+            this._labelTwoPairs.Text = "0";
+            this._labelTwoPairs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // _labelSets
+            // _labelTrips
             // 
-            this._labelSets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._labelSets.Location = new System.Drawing.Point(66, 78);
-            this._labelSets.Name = "_labelSets";
-            this._labelSets.Size = new System.Drawing.Size(92, 13);
-            this._labelSets.TabIndex = 40;
-            this._labelSets.Text = "0";
-            this._labelSets.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._labelTrips.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._labelTrips.Location = new System.Drawing.Point(66, 78);
+            this._labelTrips.Name = "_labelTrips";
+            this._labelTrips.Size = new System.Drawing.Size(92, 13);
+            this._labelTrips.TabIndex = 40;
+            this._labelTrips.Text = "0";
+            this._labelTrips.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // _labelStraights
             // 
@@ -358,11 +358,11 @@
             this.groupBox1.Controls.Add(this._labelStraights);
             this.groupBox1.Controls.Add(this._labelPairs);
             this.groupBox1.Controls.Add(this._labelFlushes);
-            this.groupBox1.Controls.Add(this._labelSets);
+            this.groupBox1.Controls.Add(this._labelTrips);
             this.groupBox1.Controls.Add(this._labelFullHouse);
             this.groupBox1.Controls.Add(this._labelHighCard);
             this.groupBox1.Controls.Add(this._labelStraightFlush);
-            this.groupBox1.Controls.Add(this._labelDoublePairs);
+            this.groupBox1.Controls.Add(this._labelTwoPairs);
             this.groupBox1.Location = new System.Drawing.Point(659, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(164, 179);
@@ -496,9 +496,9 @@
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(6, 65);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(65, 13);
+            this.label25.Size = new System.Drawing.Size(52, 13);
             this.label25.TabIndex = 48;
-            this.label25.Text = "Double Pair:";
+            this.label25.Text = "Two Pair:";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // _panelHands
@@ -701,8 +701,8 @@
         private System.Windows.Forms.Label _labelPairs;
         private System.Windows.Forms.Label _labelTotalsHands;
         private System.Windows.Forms.Label _labelHighCard;
-        private System.Windows.Forms.Label _labelDoublePairs;
-        private System.Windows.Forms.Label _labelSets;
+        private System.Windows.Forms.Label _labelTwoPairs;
+        private System.Windows.Forms.Label _labelTrips;
         private System.Windows.Forms.Label _labelStraights;
         private System.Windows.Forms.Label _labelFlushes;
         private System.Windows.Forms.Label _labelQuads;

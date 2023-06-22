@@ -8,9 +8,9 @@ namespace BerldPoker
 {
     public class HighCard : IHandValue
     {
-        public CardValue[] Values { get; private set; }
+        public CardRank[] Values { get; private set; }
 
-        public HighCard(CardValue[] values)
+        public HighCard(CardRank[] values)
         {
             if (values == null || values.Length != 5)
             {

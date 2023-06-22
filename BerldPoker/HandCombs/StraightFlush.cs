@@ -2,9 +2,9 @@
 {
     public class StraightFlush : IHandValue
     {
-        public CardValue Highest { get; private set; }
+        public CardRank Highest { get; private set; }
 
-        public StraightFlush(CardValue highest)
+        public StraightFlush(CardRank highest)
         {
             Highest = highest;
         }
@@ -16,7 +16,7 @@
 
         public override string ToString()
         {
-            if(Highest == CardValue.Ace)
+            if(Highest == CardRank.Ace)
             {
                 return "Royal Flush";
             }

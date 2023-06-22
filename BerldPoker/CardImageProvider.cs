@@ -22,7 +22,7 @@ namespace BerldPoker
 
         public static Bitmap GetImage(Card card)
         {
-            return _cardImages[(int)card.Suit * 13 + ((int)card.Value)];
+            return _cardImages[(int)card.Suit * 13 + ((int)card.Rank)];
         }
 
         private static Bitmap CropImage(Bitmap source, Rectangle section)

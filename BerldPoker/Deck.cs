@@ -77,7 +77,7 @@ namespace BerldPoker
             {
                 for (int valueIndex = 0; valueIndex < 13; valueIndex++)
                 {
-                    sortedDeck[suitIndex * 13 + valueIndex] = new Card((CardValue)valueIndex, (CardSuit)suitIndex);
+                    sortedDeck[suitIndex * 13 + valueIndex] = new Card((CardRank)valueIndex, (CardSuit)suitIndex);
                 }
             }
 

@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BerldPoker
+﻿namespace BerldPoker
 {
-    public class DoublePair : IHandValue
+    public class TwoPair : IHandValue
     {
-        public CardValue HigherPair { get; private set; }
-        public CardValue LowerPair { get; private set; }
-        public CardValue Kicker { get; private set; }
+        public CardRank HigherPair { get; private set; }
+        public CardRank LowerPair { get; private set; }
+        public CardRank Kicker { get; private set; }
 
-        public DoublePair(CardValue pair1, CardValue pair2, CardValue kicker)
+        public TwoPair(CardRank pair1, CardRank pair2, CardRank kicker)
         {
             if ((int)pair1 > (int)pair2)
             {
@@ -38,7 +32,7 @@ namespace BerldPoker
             string pluralHigher;
             string pluralLower;
 
-            if (HigherPair == (CardValue)4)
+            if (HigherPair == (CardRank)4)
             {
                 pluralHigher = "es";
             }
@@ -47,7 +41,7 @@ namespace BerldPoker
                 pluralHigher = "s";
             }
 
-            if (LowerPair == (CardValue)4)
+            if (LowerPair == (CardRank)4)
             {
                 pluralLower = "es";
             }
@@ -56,7 +50,7 @@ namespace BerldPoker
                 pluralLower = "s";
             }
 
-            return string.Format("Double Pair, {0}{1} Up With {2}{3}", HigherPair.ToString(), pluralHigher, LowerPair.ToString(), pluralLower);
+            return string.Format("Two Pair, {0}{1} Up With {2}{3}", HigherPair.ToString(), pluralHigher, LowerPair.ToString(), pluralLower);
         }
     }
 }

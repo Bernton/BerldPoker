@@ -8,9 +8,9 @@ namespace BerldPoker
 {
     public class Flush : IHandValue
     {
-        public CardValue[] Values { get; private set; }
+        public CardRank[] Values { get; private set; }
 
-        public Flush(CardValue[] values)
+        public Flush(CardRank[] values)
         {
             if(values == null || values.Length != 5)
             {

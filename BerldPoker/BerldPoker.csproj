@@ -55,12 +55,13 @@
   <ItemGroup>
     <Compile Include="Card.cs" />
     <Compile Include="CardImageProvider.cs" />
+    <Compile Include="CardRank.cs" />
     <Compile Include="CardSuit.cs" />
-    <Compile Include="CardValue.cs" />
     <Compile Include="Deck.cs" />
-    <Compile Include="HandCombs\DoublePair.cs" />
     <Compile Include="HandCombs\Flush.cs" />
     <Compile Include="Hand.cs" />
+    <Compile Include="HandCombs\ThreeOfAKind.cs" />
+    <Compile Include="HandCombs\TwoPair.cs" />
     <Compile Include="HandRanking.cs" />
     <Compile Include="View\FormCombStatistics.cs">
       <SubType>Form</SubType>
@@ -85,7 +86,6 @@
     <Compile Include="HandCombs\HighCard.cs" />
     <Compile Include="HandCombs\Pair.cs" />
     <Compile Include="HandCombs\FourOfAKind.cs" />
-    <Compile Include="HandCombs\TreeOfAKind.cs" />
     <Compile Include="HandCombs\Straight.cs" />
     <Compile Include="HandCombs\StraightFlush.cs" />
     <Compile Include="View\HandPanel.cs">

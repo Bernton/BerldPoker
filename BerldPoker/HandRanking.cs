@@ -14,12 +14,12 @@ namespace BerldPoker
                 {
                     if (i == i2)
                     {
-                        Hands.Add(new Hand(0, false, (CardValue)i, (CardValue)i2));
+                        Hands.Add(new Hand(0, false, (CardRank)i, (CardRank)i2));
                     }
                     else
                     {
-                        Hands.Add(new Hand(0, true, (CardValue)i, (CardValue)i2));
-                        Hands.Add(new Hand(0, false, (CardValue)i, (CardValue)i2));
+                        Hands.Add(new Hand(0, true, (CardRank)i, (CardRank)i2));
+                        Hands.Add(new Hand(0, false, (CardRank)i, (CardRank)i2));
                     }
                 }
             }

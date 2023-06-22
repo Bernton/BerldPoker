@@ -11,14 +11,13 @@ namespace BerldPoker
             get
             {
                 return
-                    RoyalFlush +
                     StraightFlush +
                     FourOfAKind +
                     FullHouse +
                     Flush +
                     Straight +
                     ThreeOfAKind +
-                    DoublePair +
+                    TwoPair +
                     Pair +
                     HighCard;
             }
@@ -31,7 +30,7 @@ namespace BerldPoker
         public static int Flush { get; private set; }
         public static int Straight { get; private set; }
         public static int ThreeOfAKind { get; private set; }
-        public static int DoublePair { get; private set; }
+        public static int TwoPair { get; private set; }
         public static int Pair { get; private set; }
         public static int HighCard { get; private set; }
 
@@ -117,11 +116,11 @@ namespace BerldPoker
                 }
                 else if (type == typeof(FullHouse))
                 {
-                    if (((FullHouse)currentlyBest).TreeOfAKind > ((FullHouse)competitor).TreeOfAKind)
+                    if (((FullHouse)currentlyBest).ThreeOfAKind > ((FullHouse)competitor).ThreeOfAKind)
                     {
                         return false;
                     }
-                    else if (((FullHouse)currentlyBest).TreeOfAKind < ((FullHouse)competitor).TreeOfAKind)
+                    else if (((FullHouse)currentlyBest).ThreeOfAKind < ((FullHouse)competitor).ThreeOfAKind)
                     {
                         return true;
                     }
@@ -175,33 +174,33 @@ namespace BerldPoker
                         return false;
                     }
                 }
-                else if (type == typeof(TreeOfAKind))
+                else if (type == typeof(ThreeOfAKind))
                 {
-                    if (((TreeOfAKind)currentlyBest).Value > ((TreeOfAKind)competitor).Value)
+                    if (((ThreeOfAKind)currentlyBest).Value > ((ThreeOfAKind)competitor).Value)
                     {
                         return false;
                     }
-                    else if (((TreeOfAKind)currentlyBest).Value < ((TreeOfAKind)competitor).Value)
+                    else if (((ThreeOfAKind)currentlyBest).Value < ((ThreeOfAKind)competitor).Value)
                     {
                         return true;
                     }
                     else
                     {
-                        if (((TreeOfAKind)currentlyBest).Kickers[0] > ((TreeOfAKind)competitor).Kickers[0])
+                        if (((ThreeOfAKind)currentlyBest).Kickers[0] > ((ThreeOfAKind)competitor).Kickers[0])
                         {
                             return false;
                         }
-                        else if (((TreeOfAKind)currentlyBest).Kickers[0] < ((TreeOfAKind)competitor).Kickers[0])
+                        else if (((ThreeOfAKind)currentlyBest).Kickers[0] < ((ThreeOfAKind)competitor).Kickers[0])
                         {
                             return true;
                         }
                         else
                         {
-                            if (((TreeOfAKind)currentlyBest).Kickers[1] > ((TreeOfAKind)competitor).Kickers[1])
+                            if (((ThreeOfAKind)currentlyBest).Kickers[1] > ((ThreeOfAKind)competitor).Kickers[1])
                             {
                                 return false;
                             }
-                            else if (((TreeOfAKind)currentlyBest).Kickers[1] < ((TreeOfAKind)competitor).Kickers[1])
+                            else if (((ThreeOfAKind)currentlyBest).Kickers[1] < ((ThreeOfAKind)competitor).Kickers[1])
                             {
                                 return true;
                             }
@@ -213,33 +212,33 @@ namespace BerldPoker
                         }
                     }
                 }
-                else if (type == typeof(DoublePair))
+                else if (type == typeof(TwoPair))
                 {
-                    if (((DoublePair)currentlyBest).HigherPair > ((DoublePair)competitor).HigherPair)
+                    if (((TwoPair)currentlyBest).HigherPair > ((TwoPair)competitor).HigherPair)
                     {
                         return false;
                     }
-                    else if (((DoublePair)currentlyBest).HigherPair < ((DoublePair)competitor).HigherPair)
+                    else if (((TwoPair)currentlyBest).HigherPair < ((TwoPair)competitor).HigherPair)
                     {
                         return true;
                     }
                     else
                     {
-                        if (((DoublePair)currentlyBest).LowerPair > ((DoublePair)competitor).LowerPair)
+                        if (((TwoPair)currentlyBest).LowerPair > ((TwoPair)competitor).LowerPair)
                         {
                             return false;
                         }
-                        else if (((DoublePair)currentlyBest).LowerPair < ((DoublePair)competitor).LowerPair)
+                        else if (((TwoPair)currentlyBest).LowerPair < ((TwoPair)competitor).LowerPair)
                         {
                             return true;
                         }
                         else
                         {
-                            if ((((DoublePair)currentlyBest).Kicker > ((DoublePair)competitor).Kicker))
+                            if ((((TwoPair)currentlyBest).Kicker > ((TwoPair)competitor).Kicker))
                             {
                                 return false;
                             }
-                            else if ((((DoublePair)currentlyBest).Kicker < ((DoublePair)competitor).Kicker))
+                            else if ((((TwoPair)currentlyBest).Kicker < ((TwoPair)competitor).Kicker))
                             {
                                 return true;
                             }
@@ -305,7 +304,7 @@ namespace BerldPoker
 
             if (IsStraightFlush(cards, ref handValue))
             {
-                if (((StraightFlush)handValue).Highest == CardValue.Ace)
+                if (((StraightFlush)handValue).Highest == CardRank.Ace)
                 {
                     RoyalFlush++;
                 }
@@ -338,15 +337,15 @@ namespace BerldPoker
                 return handValue;
             }
 
-            if (IsTreeOfAKind(cards, ref handValue))
+            if (IsThreeOfAKind(cards, ref handValue))
             {
                 ThreeOfAKind++;
                 return handValue;
             }
 
-            if (IsDoublePair(cards, ref handValue))
+            if (IsTwoPair(cards, ref handValue))
             {
-                DoublePair++;
+                TwoPair++;
                 return handValue;
             }
 
@@ -358,14 +357,14 @@ namespace BerldPoker
 
 
             HighCard++;
-            Card[] sorted = cards.OrderBy(c => c.Value).ToArray();
-            CardValue[] best5 = new CardValue[]
+            Card[] sorted = cards.OrderBy(c => c.Rank).ToArray();
+            CardRank[] best5 = new CardRank[]
             {
-                sorted[6].Value,
-                sorted[5].Value,
-                sorted[4].Value,
-                sorted[3].Value,
-                sorted[2].Value
+                sorted[6].Rank,
+                sorted[5].Rank,
+                sorted[4].Rank,
+                sorted[3].Rank,
+                sorted[2].Rank
             };
 
             return new HighCard(best5);
@@ -375,7 +374,7 @@ namespace BerldPoker
         {
             for (int i = 0; i < 4; i++)
             {
-                Card[] result = cards.Where(c => c.Suit == ((CardSuit)i)).OrderBy(c => c.Value).ToArray();
+                Card[] result = cards.Where(c => c.Suit == ((CardSuit)i)).OrderBy(c => c.Rank).ToArray();
 
                 if (result.Length >= 5 && IsStraight(result, ref value))
                 {
@@ -391,11 +390,11 @@ namespace BerldPoker
         {
             for (int i = 0; i < 13; i++)
             {
-                if (cards.Where(c => c.Value == ((CardValue)i)).ToArray().Length == 4)
+                if (cards.Where(c => c.Rank == ((CardRank)i)).ToArray().Length == 4)
                 {
-                    CardValue kicker = cards.Where(c => c.Value != (CardValue)i).Max(c => c.Value);
+                    CardRank kicker = cards.Where(c => c.Rank != (CardRank)i).Max(c => c.Rank);
 
-                    value = new FourOfAKind((CardValue)i, kicker);
+                    value = new FourOfAKind((CardRank)i, kicker);
                     return true;
                 }
             }
@@ -405,34 +404,32 @@ namespace BerldPoker
 
         private static bool IsFullHouse(Card[] cards, ref IHandValue value)
         {
-            bool trips = false;
-            int tripIndex = 0;
+            int? threeOfAKindIndex = null;
 
             for (int i = 12; i >= 0; i--)
             {
-                if (cards.Where(c => c.Value == ((CardValue)i)).ToArray().Length == 3)
+                if (cards.Where(c => c.Rank == ((CardRank)i)).ToArray().Length == 3)
                 {
-                    trips = true;
-                    tripIndex = i;
+                    threeOfAKindIndex = i;
                     break;
                 }
             }
 
-            if (!trips)
+            if (!threeOfAKindIndex.HasValue)
             {
                 return false;
             }
 
             for (int i = 12; i >= 0; i--)
             {
-                if (i == tripIndex)
+                if (i == threeOfAKindIndex)
                 {
                     continue;
                 }
 
-                if (cards.Where(c => c.Value == ((CardValue)i)).ToArray().Length >= 2)
+                if (cards.Where(c => c.Rank == ((CardRank)i)).ToArray().Length >= 2)
                 {
-                    value = new FullHouse((CardValue)tripIndex, (CardValue)i);
+                    value = new FullHouse((CardRank)threeOfAKindIndex.Value, (CardRank)i);
                     return true;
                 }
             }
@@ -444,17 +441,17 @@ namespace BerldPoker
         {
             for (int i = 0; i < 4; i++)
             {
-                Card[] result = cards.Where(c => c.Suit == ((CardSuit)i)).OrderBy(c => Math.Abs((int)c.Value - 12)).ToArray();
+                Card[] result = cards.Where(c => c.Suit == ((CardSuit)i)).OrderBy(c => Math.Abs((int)c.Rank - 12)).ToArray();
 
                 if (result.Length >= 5)
                 {
-                    value = new Flush(new CardValue[]
+                    value = new Flush(new CardRank[]
                     {
-                        result[0].Value,
-                        result[1].Value,
-                        result[2].Value,
-                        result[3].Value,
-                        result[4].Value
+                        result[0].Rank,
+                        result[1].Rank,
+                        result[2].Rank,
+                        result[3].Rank,
+                        result[4].Rank
                     });
 
                     return true;
@@ -467,23 +464,23 @@ namespace BerldPoker
         private static bool IsStraight(Card[] cards, ref IHandValue value)
         {
             List<Card> listCards = cards.ToList();
-            listCards = listCards.OrderBy(c => c.Value).ToList();
+            listCards = listCards.OrderBy(c => c.Rank).ToList();
 
             int consec = 1;
 
-            if (listCards[listCards.Count - 1].Value == CardValue.Ace && listCards[0].Value == CardValue.Deuce)
+            if (listCards[listCards.Count - 1].Rank == CardRank.Ace && listCards[0].Rank == CardRank.Deuce)
             {
                 consec = 2;
             }
 
             for (int i = 1; i < listCards.Count; i++)
             {
-                if (listCards[i].Value == listCards[i - 1].Value)
+                if (listCards[i].Rank == listCards[i - 1].Rank)
                 {
                     continue;
                 }
 
-                if ((int)(listCards[i].Value - 1) == (int)listCards[i - 1].Value)
+                if ((int)(listCards[i].Rank - 1) == (int)listCards[i - 1].Rank)
                 {
                     consec++;
                 }
@@ -494,12 +491,12 @@ namespace BerldPoker
 
                 if (consec >= 5)
                 {
-                    if (i != listCards.Count - 1 && listCards[i].Value + 1 == listCards[i + 1].Value)
+                    if (i != listCards.Count - 1 && listCards[i].Rank + 1 == listCards[i + 1].Rank)
                     {
                         continue;
                     }
 
-                    value = new Straight(listCards[i].Value);
+                    value = new Straight(listCards[i].Rank);
                     return true;
                 }
             }
@@ -507,18 +504,18 @@ namespace BerldPoker
             return false;
         }
 
-        private static bool IsTreeOfAKind(Card[] cards, ref IHandValue value)
+        private static bool IsThreeOfAKind(Card[] cards, ref IHandValue value)
         {
             for (int i = 0; i < 13; i++)
             {
-                if (cards.Where(c => c.Value == ((CardValue)i)).ToArray().Length == 3)
+                if (cards.Where(c => c.Rank == ((CardRank)i)).ToArray().Length == 3)
                 {
-                    Card[] result = cards.Where(c => c.Value != ((CardValue)i)).OrderBy(c => Math.Abs((int)c.Value - 12)).ToArray();
+                    Card[] result = cards.Where(c => c.Rank != ((CardRank)i)).OrderBy(c => Math.Abs((int)c.Rank - 12)).ToArray();
 
-                    value = new TreeOfAKind((CardValue)i, new CardValue[]
+                    value = new ThreeOfAKind((CardRank)i, new CardRank[]
                     {
-                        result[0].Value,
-                        result[1].Value
+                        result[0].Rank,
+                        result[1].Rank
                     });
 
                     return true;
@@ -528,7 +525,7 @@ namespace BerldPoker
             return false;
         }
 
-        private static bool IsDoublePair(Card[] cards, ref IHandValue value)
+        private static bool IsTwoPair(Card[] cards, ref IHandValue value)
         {
             int countOfPairs = 0;
             int higherPair = 0;
@@ -536,7 +533,7 @@ namespace BerldPoker
 
             for (int i = 0; i < 13; i++)
             {
-                if (cards.Where(c => c.Value == ((CardValue)i)).ToArray().Length == 2)
+                if (cards.Where(c => c.Rank == ((CardRank)i)).ToArray().Length == 2)
                 {
                     countOfPairs++;
                     lowerPair = higherPair;
@@ -546,9 +543,9 @@ namespace BerldPoker
 
             if (countOfPairs >= 2)
             {
-                CardValue kicker = cards.Where(c => (int)c.Value != higherPair && (int)c.Value != lowerPair).Max(c => c.Value);
+                CardRank kicker = cards.Where(c => (int)c.Rank != higherPair && (int)c.Rank != lowerPair).Max(c => c.Rank);
 
-                value = new DoublePair((CardValue)higherPair, (CardValue)lowerPair, kicker);
+                value = new TwoPair((CardRank)higherPair, (CardRank)lowerPair, kicker);
                 return true;
             }
 
@@ -559,17 +556,17 @@ namespace BerldPoker
         {
             for (int i = 0; i < 13; i++)
             {
-                Card[] result = cards.Where(c => c.Value == ((CardValue)i)).ToArray();
+                Card[] result = cards.Where(c => c.Rank == ((CardRank)i)).ToArray();
 
                 if (result.Length == 2)
                 {
-                    Card[] sorted = cards.Where(c => c.Value != ((CardValue)i)).OrderBy(c => Math.Abs((int)c.Value - 12)).ToArray();
+                    Card[] sorted = cards.Where(c => c.Rank != ((CardRank)i)).OrderBy(c => Math.Abs((int)c.Rank - 12)).ToArray();
 
-                    value = new Pair((CardValue)i, new CardValue[]
+                    value = new Pair((CardRank)i, new CardRank[]
                     {
-                        sorted[0].Value,
-                        sorted[1].Value,
-                        sorted[2].Value
+                        sorted[0].Rank,
+                        sorted[1].Rank,
+                        sorted[2].Rank
                     });
 
                     return true;

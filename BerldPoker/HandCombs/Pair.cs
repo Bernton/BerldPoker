@@ -8,10 +8,10 @@ namespace BerldPoker
 {
     public class Pair : IHandValue
     {
-        public CardValue Value { get; private set; }
-        public CardValue[] Kickers { get; private set; }
+        public CardRank Value { get; private set; }
+        public CardRank[] Kickers { get; private set; }
 
-        public Pair(CardValue value, CardValue[] kickers)
+        public Pair(CardRank value, CardRank[] kickers)
         {
             if (kickers == null || kickers.Length != 3)
             {
@@ -31,7 +31,7 @@ namespace BerldPoker
         {
             string plural;
 
-           if (Value == (CardValue)4)
+           if (Value == (CardRank)4)
             {
                 plural = "es";
             }

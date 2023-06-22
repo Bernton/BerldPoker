@@ -8,9 +8,9 @@ namespace BerldPoker
 {
     public class Straight : IHandValue
     {
-        public CardValue Highest { get; private set; }
+        public CardRank Highest { get; private set; }
 
-        public Straight(CardValue highest)
+        public Straight(CardRank highest)
         {
             Highest = highest;
         }
@@ -22,11 +22,11 @@ namespace BerldPoker
 
         public override string ToString()
         {
-            if(Highest == CardValue.Ace)
+            if(Highest == CardRank.Ace)
             {
                 return "Broadway (Ace Hight Straight)";
             }
-            else if(Highest == CardValue.Five)
+            else if(Highest == CardRank.Five)
             {
                 return "Wheel (Five High Straight)";
             }

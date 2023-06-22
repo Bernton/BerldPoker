@@ -14,24 +14,24 @@
             }
         }
 
-        public CardValue CardValue1 { get; }
-        public CardValue CardValue2 { get; }
+        public CardRank CardRank1 { get; }
+        public CardRank CardRank2 { get; }
 
-        public Hand(int count, bool isSuited, CardValue cardValue1, CardValue cardValue2)
+        public Hand(int count, bool isSuited, CardRank cardRank1, CardRank cardRank2)
         {
             Count = count;
             IsSuited = isSuited;
-            CardValue1 = cardValue1;
-            CardValue2 = cardValue2;
+            CardRank1 = cardRank1;
+            CardRank2 = cardRank2;
         }
 
         public override string ToString()
         {
-            if ((int)CardValue1 == (int)CardValue2)
+            if ((int)CardRank1 == (int)CardRank2)
             {
                 string plural;
 
-                if (CardValue1 == (CardValue)4)
+                if (CardRank1 == (CardRank)4)
                 {
                     plural = "es";
                 }
@@ -40,7 +40,7 @@
                     plural = "s";
                 }
 
-                return string.Format("Pocket {0}{1}", CardValue1, plural);
+                return string.Format("Pocket {0}{1}", CardRank1, plural);
             }
 
             string afterText;
@@ -54,7 +54,7 @@
                 afterText = "Offsuit";
             }
 
-            return string.Format("{0} {1} {2}", CardValue1, CardValue2, afterText);
+            return string.Format("{0} {1} {2}", CardRank1, CardRank2, afterText);
         }
     }
 }

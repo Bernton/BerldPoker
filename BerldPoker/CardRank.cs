@@ -1,6 +1,6 @@
 ﻿namespace BerldPoker
 {
-    public enum CardValue
+    public enum CardRank
     {
         Deuce,
         Tray,

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BerldPoker
 {
-    public class TreeOfAKind : IHandValue
+    public class ThreeOfAKind : IHandValue
     {
-        public CardValue Value { get; private set; }
-        public CardValue[] Kickers { get; private set; }
+        public CardRank Value { get; private set; }
+        public CardRank[] Kickers { get; private set; }
 
-        public TreeOfAKind(CardValue value, CardValue[] kickers)
+        public ThreeOfAKind(CardRank value, CardRank[] kickers)
         {
             if (kickers == null || kickers.Length != 2)
             {
@@ -31,7 +31,7 @@ namespace BerldPoker
         {
             string plural;
 
-            if (Value == (CardValue)4)
+            if (Value == (CardRank)4)
             {
                 plural = "es";
             }
@@ -40,7 +40,7 @@ namespace BerldPoker
                 plural = "s";
             }
 
-            return string.Format("Tree Of A Kind With {0}{1}", Value.ToString(), plural);
+            return string.Format("Three Of A Kind With {0}{1}", Value.ToString(), plural);
         }
     }
 }

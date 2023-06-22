@@ -8,10 +8,10 @@ namespace BerldPoker
 {
     public class FourOfAKind : IHandValue
     {
-        public CardValue Value { get; private set; }
-        public CardValue Kicker { get; private set; }
+        public CardRank Value { get; private set; }
+        public CardRank Kicker { get; private set; }
 
-        public FourOfAKind(CardValue value, CardValue kicker)
+        public FourOfAKind(CardRank value, CardRank kicker)
         {
             Value = value;
             Kicker = kicker;
@@ -26,7 +26,7 @@ namespace BerldPoker
         {
             string plural;
 
-            if (Value == (CardValue)4)
+            if (Value == (CardRank)4)
             {
                 plural = "es";
             }

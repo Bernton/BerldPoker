@@ -2,18 +2,18 @@
 {
     public class Card
     {
-        public Card(CardValue value, CardSuit suit)
+        public Card(CardRank rank, CardSuit suit)
         {
-            Value = value;
+            Rank = rank;
             Suit = suit;
         }
 
-        public CardValue Value { get; private set; }
+        public CardRank Rank { get; private set; }
         public CardSuit Suit { get; private set; }
 
         public override string ToString()
         {
-            return string.Format("{0} of {1}s", Value.ToString(), Suit.ToString());
+            return string.Format("{0} of {1}s", Rank.ToString(), Suit.ToString());
         }
     }
 }

@@ -8,12 +8,12 @@ namespace BerldPoker
 {
     public class FullHouse : IHandValue
     {
-        public CardValue TreeOfAKind { get; private set; }
-        public CardValue Pair { get; private set; }
+        public CardRank ThreeOfAKind { get; private set; }
+        public CardRank Pair { get; private set; }
 
-        public FullHouse(CardValue set, CardValue pair)
+        public FullHouse(CardRank set, CardRank pair)
         {
-            TreeOfAKind = set;
+            ThreeOfAKind = set;
             Pair = pair;
         }
 
@@ -27,7 +27,7 @@ namespace BerldPoker
             string pluralSet;
             string pluralPair;
 
-            if (TreeOfAKind == (CardValue)4)
+            if (ThreeOfAKind == (CardRank)4)
             {
                 pluralSet = "es";
             }
@@ -36,7 +36,7 @@ namespace BerldPoker
                 pluralSet = "s";
             }
 
-            if (Pair == (CardValue)4)
+            if (Pair == (CardRank)4)
             {
                 pluralPair = "es";
             }
@@ -45,7 +45,7 @@ namespace BerldPoker
                 pluralPair = "s";
             }
 
-            return string.Format("Full House, {0}{1} Full Of {2}{3}", TreeOfAKind.ToString(), pluralSet, Pair.ToString(), pluralPair);
+            return string.Format("Full House, {0}{1} Full Of {2}{3}", ThreeOfAKind.ToString(), pluralSet, Pair.ToString(), pluralPair);
         }
     }
 }
